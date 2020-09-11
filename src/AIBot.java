@@ -3,6 +3,9 @@ public class AIBot {
     public AIBot(){
         b = new Board();
     }
+    public int find11(){
+
+    }
 
 
 }
