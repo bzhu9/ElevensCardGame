@@ -27,4 +27,7 @@ public class Deck {
         deck.remove(0);
         return c;
     }
+    public int numCardsLeft(){
+        return deck.size();
+    }
 }
