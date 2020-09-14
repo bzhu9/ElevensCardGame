@@ -5,12 +5,14 @@ public class Deck {
     private ArrayList<Card> deck;
 
     public Deck(){
+        deck = new ArrayList<>();
         for (int i=1;i<14;i++){
             for (int j=0;j<4;j++){
                 Card c = new Card(i);
                 deck.add(c);
             }
         }
+        this.randomizeDeck();
     }
     public String getDeck(){
         String out = "";

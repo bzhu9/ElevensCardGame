@@ -7,6 +7,7 @@ public class Driver {
         Scanner in = new Scanner(System.in);
         System.out.println("Human (1) or AI (2): ");
         int num = in.nextInt();
+        in.nextLine();
         boolean gameover = false;
         boolean win = false;
         Deck d = new Deck();
@@ -17,7 +18,7 @@ public class Driver {
         Board b = new Board(initialCards);
         System.out.println(b.getBoard());
 
-        while (gameover) {
+        while (!gameover) {
             if (num == 1) {
                 System.out.println("Player 1st choice: ");
                 String playerChoice = in.nextLine();
@@ -25,6 +26,7 @@ public class Driver {
                 String playerChoice2 = in.nextLine();
                 System.out.println("Do you need to select a third card? (1=yes, 2=no): ");
                 int third = in.nextInt();
+                in.nextLine();
                 Card newCard1 = d.getNextCard();
                 Card newCard2 = d.getNextCard();
 
@@ -43,7 +45,9 @@ public class Driver {
 
             }
             else {
-                AIBot ai = new AIBot();
+                System.out.println("yay");
+
+                /*AIBot ai = new AIBot();
                 String aiSelection = ai.find11();
 
                 for (int i = 0; i < aiSelection.length()-1 ; i++) {
@@ -52,7 +56,7 @@ public class Driver {
                     b.makeMove(s,newCard1);
 
                 }
-
+*/
 
             }
 
@@ -61,7 +65,7 @@ public class Driver {
                 gameover = true;
 
             }
-            else if (b.checkAvailableMoves()){
+            else if (!b.checkAvailableMoves()){
                 gameover = true;
             }
 

@@ -1,4 +1,4 @@
-public class AIBot {
+/*public class AIBot {
     private Board b;
     public AIBot(){
         b = new Board();
@@ -8,4 +8,4 @@ public class AIBot {
     }
 
 
-}
+}*/
