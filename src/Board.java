@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Board {
-    private ArrayList<Card> cards;
+    public ArrayList<Card> cards;
 
     public Board(ArrayList<Card> initial){
         cards = new ArrayList<>();
@@ -38,4 +38,5 @@ public class Board {
         }
         return need.length()==0;
     }
+
 }
