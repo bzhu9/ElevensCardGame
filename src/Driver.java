@@ -10,7 +10,11 @@ public class Driver {
         boolean gameover = false;
         boolean win = false;
         Deck d = new Deck();
-        Board b = new Board();
+        ArrayList<Card> initialCards = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            initialCards.add(d.getNextCard());
+        }
+        Board b = new Board(initialCards);
         System.out.println(b.getBoard());
 
         while (gameover) {
@@ -23,23 +27,18 @@ public class Driver {
                 int third = in.nextInt();
                 Card newCard1 = d.getNextCard();
                 Card newCard2 = d.getNextCard();
+
+                b.makeMove(playerChoice,newCard1);
+                b.makeMove(playerChoice2,newCard2);
                 if(third==1){
                     System.out.println("Player 3rd choice: ");
                     String playerChoice3 = in.nextLine();
                     Card newCard3 = d.getNextCard();
+                    b.makeMove(playerChoice3,newCard3);
 
                 }
-                ArrayList<String> choices = new ArrayList<>();
 
-
-
-                if(b.checkSum()){
-                    b.makeMove(playerChoice,newCard1);
-                }
-                else{
-                    System.out.println("illegal move");
-                }
-
+                System.out.println(b.getBoard());
 
 
             }
@@ -48,6 +47,8 @@ public class Driver {
                 String aiSelection = ai.find11();
                 Card newCard1 = d.getNextCard();
                 Card newCard2 = d.getNextCard();
+                char[] aiChoices = aiSelection.toCharArray();
+                aiChoices[0]
 
                 b.makeMove(aiSelection,newCard1);
             }
