@@ -7,13 +7,18 @@ public class Driver {
         Scanner in = new Scanner(System.in);
         System.out.println("Human (1) or AI (2): ");
         int num = in.nextInt();
+        in.nextLine();
         boolean gameover = false;
         boolean win = false;
         Deck d = new Deck();
-        Board b = new Board();
+        ArrayList<Card> initialCards = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            initialCards.add(d.getNextCard());
+        }
+        Board b = new Board(initialCards);
         System.out.println(b.getBoard());
 
-        while (gameover) {
+        while (!gameover) {
             if (num == 1) {
                 System.out.println("Player 1st choice: ");
                 String playerChoice = in.nextLine();
@@ -21,35 +26,38 @@ public class Driver {
                 String playerChoice2 = in.nextLine();
                 System.out.println("Do you need to select a third card? (1=yes, 2=no): ");
                 int third = in.nextInt();
+                in.nextLine();
                 Card newCard1 = d.getNextCard();
                 Card newCard2 = d.getNextCard();
+
+                b.makeMove(playerChoice,newCard1);
+                b.makeMove(playerChoice2,newCard2);
                 if(third==1){
                     System.out.println("Player 3rd choice: ");
                     String playerChoice3 = in.nextLine();
                     Card newCard3 = d.getNextCard();
+                    b.makeMove(playerChoice3,newCard3);
 
                 }
-                ArrayList<String> choices = new ArrayList<>();
 
-
-
-                if(b.checkSum()){
-                    b.makeMove(playerChoice,newCard1);
-                }
-                else{
-                    System.out.println("illegal move");
-                }
-
+                System.out.println(b.getBoard());
 
 
             }
             else {
-                AIBot ai = new AIBot();
-                String aiSelection = ai.find11();
-                Card newCard1 = d.getNextCard();
-                Card newCard2 = d.getNextCard();
+                System.out.println("yay");
 
-                b.makeMove(aiSelection,newCard1);
+                /*AIBot ai = new AIBot();
+                String aiSelection = ai.find11();
+
+                for (int i = 0; i < aiSelection.length()-1 ; i++) {
+                    String s = aiSelection.substring(i,i+1);
+                    Card newCard1 = d.getNextCard();
+                    b.makeMove(s,newCard1);
+
+                }
+*/
+
             }
 
             if (d.numCardsLeft() == 0) {
@@ -57,7 +65,7 @@ public class Driver {
                 gameover = true;
 
             }
-            else if (b.checkAvailableMoves()){
+            else if (!b.checkAvailableMoves()){
                 gameover = true;
             }
 
