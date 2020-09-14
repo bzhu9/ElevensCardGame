@@ -45,12 +45,15 @@ public class Driver {
             else {
                 AIBot ai = new AIBot();
                 String aiSelection = ai.find11();
-                Card newCard1 = d.getNextCard();
-                Card newCard2 = d.getNextCard();
-                char[] aiChoices = aiSelection.toCharArray();
-                aiChoices[0]
 
-                b.makeMove(aiSelection,newCard1);
+                for (int i = 0; i < aiSelection.length()-1 ; i++) {
+                    String s = aiSelection.substring(i,i+1);
+                    Card newCard1 = d.getNextCard();
+                    b.makeMove(s,newCard1);
+
+                }
+
+
             }
 
             if (d.numCardsLeft() == 0) {
