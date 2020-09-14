@@ -21,8 +21,10 @@ public class Board {
     //Returns true or false if move can be made
     public void makeMove(String in, Card next){
         for (int i = 0; i<cards.size(); i++) {
-            if (cards.get(i).getName().equals(in))
+            if (cards.get(i).getName().equals(in)) {
                 cards.set(i, next);
+                break;
+            }
         }
     }
     public boolean checkSum(ArrayList<Card> c){
