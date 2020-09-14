@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver {
@@ -10,17 +11,30 @@ public class Driver {
         boolean win = false;
         Deck d = new Deck();
         Board b = new Board();
-        System.out.println(b.getBoard);
+        System.out.println(b.getBoard());
 
         while (gameover) {
             if (num == 1) {
-                System.out.println("Player choice: ");
+                System.out.println("Player 1st choice: ");
                 String playerChoice = in.nextLine();
+                System.out.println("Player 2nd choice: ");
+                String playerChoice2 = in.nextLine();
+                System.out.println("Do you need to select a third card? (1=yes, 2=no): ");
+                int third = in.nextInt();
                 Card newCard1 = d.getNextCard();
                 Card newCard2 = d.getNextCard();
+                if(third==1){
+                    System.out.println("Player 3rd choice: ");
+                    String playerChoice3 = in.nextLine();
+                    Card newCard3 = d.getNextCard();
 
-                if(b.checksum(playerChoice)){
-                    b.move(playerChoice,newCard1,newCard2);
+                }
+                ArrayList<String> choices = new ArrayList<>();
+
+
+
+                if(b.checkSum()){
+                    b.makeMove(playerChoice,newCard1);
                 }
                 else{
                     System.out.println("illegal move");
@@ -31,11 +45,11 @@ public class Driver {
             }
             else {
                 AIBot ai = new AIBot();
-                int aiSelection = ai.find11();
+                String aiSelection = ai.find11();
                 Card newCard1 = d.getNextCard();
                 Card newCard2 = d.getNextCard();
 
-                b.move(aiSelection,newCard1,newCard2);
+                b.makeMove(aiSelection,newCard1);
             }
 
             if (d.numCardsLeft() == 0) {
