@@ -10,7 +10,7 @@ public class Driver {
         //in.nextLine();
         int num = 2;
         int count = 0;
-        for (int k = 0; k < 100000; k++) {
+        for (int k = 0; k < 1000000; k++) {
             boolean gameover = false;
             boolean win = false;
             Deck d = new Deck();
@@ -19,7 +19,7 @@ public class Driver {
                 initialCards.add(d.getNextCard());
             }
             Board b = new Board(initialCards);
-            System.out.println(b.getBoard());
+            b.getBoard();
 
             while (!gameover) {
                 if (d.numCardsLeft()== 0) {
@@ -72,8 +72,7 @@ public class Driver {
 
                     AIBot ai = new AIBot(b);
                     String aiSelection = ai.find11();
-                    System.out.println(aiSelection);
-                    System.out.println();
+
                     for (int i = 0; i < aiSelection.length(); i++) {
                         String s = aiSelection.substring(i,i+1);
                         if(d.numCardsLeft() >=1){
@@ -85,8 +84,8 @@ public class Driver {
                             b.makeMove(s,newCard1);
                         }
                     }
-                    System.out.println(b.getBoard());
-                    System.out.println();
+                    b.getBoard();
+
                 }
 
 
@@ -94,11 +93,11 @@ public class Driver {
 
             }
             if(win){
-                System.out.println("you won!");
+                //System.out.println("you won!");
                 count++;
             }
             else{
-                System.out.println("you lost!");
+                //System.out.println("you lost!");
             }
         }
         System.out.println(count);
