@@ -7,7 +7,7 @@ public class Board {
         cards = new ArrayList<>();
         cards.addAll(initial);
     }
-
+//
     public String getBoard(){
         String out = "";
         for (int i = 0; i<cards.size(); i++) {

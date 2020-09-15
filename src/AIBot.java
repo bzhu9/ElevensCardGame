@@ -6,6 +6,7 @@ public class AIBot {
     public AIBot(Board play){
         b=play;
     }
+
     public String find11(){
         ArrayList<String> arr = new ArrayList<>(Arrays.asList("J","Q","K"));
         ArrayList<Integer> elevens = new ArrayList<>();
