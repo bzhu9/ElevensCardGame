@@ -19,6 +19,16 @@ public class Driver {
         System.out.println(b.getBoard());
 
         while (!gameover) {
+            if (d.numCardsLeft() == 0) {
+                win = true;
+                gameover = true;
+                break;
+
+            }
+            else if (!b.checkAvailableMoves()){
+                gameover = true;
+                break;
+            }
             if (num == 1) {
                 System.out.println("Player 1st choice: ");
                 String playerChoice = in.nextLine();
@@ -27,11 +37,22 @@ public class Driver {
                 System.out.println("Do you need to select a third card? (1=yes, 2=no): ");
                 int third = in.nextInt();
                 in.nextLine();
-                Card newCard1 = d.getNextCard();
-                Card newCard2 = d.getNextCard();
+                if(d.numCardsLeft() >=2){
+                    Card newCard1 = d.getNextCard();
+                    Card newCard2 = d.getNextCard();
+                    b.makeMove(playerChoice,newCard1);
+                    b.makeMove(playerChoice2,newCard2);
 
-                b.makeMove(playerChoice,newCard1);
-                b.makeMove(playerChoice2,newCard2);
+                }
+                else{
+                    Card newCard1 = new Card(0);
+                    Card newCard2 = new Card(0);
+                    b.makeMove(playerChoice,newCard1);
+                    b.makeMove(playerChoice2,newCard2);
+                }
+
+
+
                 if(third==1){
                     System.out.println("Player 3rd choice: ");
                     String playerChoice3 = in.nextLine();
@@ -45,9 +66,8 @@ public class Driver {
 
             }
             else {
-                System.out.println("yay");
 
-                /*AIBot ai = new AIBot();
+                AIBot ai = new AIBot(b);
                 String aiSelection = ai.find11();
 
                 for (int i = 0; i < aiSelection.length()-1 ; i++) {
@@ -56,18 +76,11 @@ public class Driver {
                     b.makeMove(s,newCard1);
 
                 }
-*/
+
 
             }
 
-            if (d.numCardsLeft() == 0) {
-                win = true;
-                gameover = true;
 
-            }
-            else if (!b.checkAvailableMoves()){
-                gameover = true;
-            }
 
 
         }

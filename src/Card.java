@@ -4,6 +4,9 @@ public class Card {
 
     public Card(int val){
         value=val;
+        if (val ==0){
+            name = " ";
+        }
         if (val==1){
             name="A";
         }

@@ -41,4 +41,18 @@ public class Board {
         return need.length()==0;
     }
 
+    public boolean checkAvailableMoves(){
+        //check 11
+        for (int i = 0; i<9; i++){
+            for (int j = 0; j < 9; j++) {
+                if (i!=j){
+                    if (cards.get(i).getValue()+cards.get(j).getValue()==11)
+                        return true;
+                }
+            }
+        }
+        //check JQK
+        return checkJQK(cards);
+    }
+
 }
