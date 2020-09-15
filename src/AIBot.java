@@ -19,6 +19,7 @@ public class AIBot {
                     return (new Card(spot).getName()+ c.getName());
                 }
             }
+
             elevens.add(c.getValue());
         }
         if (arr.isEmpty()){
