@@ -16,7 +16,7 @@ public class AIBot {
             }
             for (Integer spot:elevens){
                 if (spot+c.getValue()==11){
-                    return (Integer.toString(spot)+Integer.toString(c.getValue()));
+                    return (new Card(spot).getName()+ c.getName());
                 }
             }
             elevens.add(c.getValue());
