@@ -51,6 +51,37 @@ public class AIBot {
             return pair;
         }
     }
+    public String findDouble(){
+        ArrayList<String> arr = new ArrayList<>(Arrays.asList("J","Q","K"));
+        ArrayList<Integer> elevens = new ArrayList<>();
+        String pair = "";
+        String second = "";
+        String temp = "";
+        for (Card c:b.cards){
+            if (arr.contains(c.getName())){
+                arr.remove(c.getName());
+            }
+            for (Integer spot:elevens){
+                if (spot+c.getValue()==11){
+                    pair = new Card(spot).getName()+ c.getName();
+                    if (new Card(spot).getName().equals(temp)||c.getName().equals(temp)){
+                        return new Card(spot).getName()+ c.getName();
+                    }
+                }
+
+            }
+            if (elevens.contains(c.getValue())){
+                temp=c.getName();
+            }
+            elevens.add(c.getValue());
+        }
+        if (arr.isEmpty()){
+            return "JQK";
+        }
+        else {
+            return pair;
+        }
+    }
 
 
 }
